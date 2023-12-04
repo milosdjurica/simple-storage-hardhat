@@ -1,10 +1,10 @@
 import { BigNumberish, ContractTransactionResponse } from "ethers";
 import { ethers } from "hardhat";
 import { expect, assert } from "chai";
-import { SimpleStorage } from "../typechain-types";
+import { SimpleStorage, SimpleStorage__factory } from "../typechain-types";
 
 describe("SimpleStorage", function () {
-	let simpleStorageFactory,
+	let simpleStorageFactory: SimpleStorage__factory,
 		simpleStorage: SimpleStorage & {
 			deploymentTransaction(): ContractTransactionResponse;
 		};

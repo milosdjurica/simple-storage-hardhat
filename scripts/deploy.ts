@@ -1,9 +1,8 @@
 import { ethers, run, network } from "hardhat";
 
 async function main() {
-	const SimpleStorageFactory = await ethers.getContractFactory(
-		"SimpleStorage"
-	);
+	const SimpleStorageFactory =
+		await ethers.getContractFactory("SimpleStorage");
 
 	console.log("Deploying contract");
 	const simpleStorage = await SimpleStorageFactory.deploy();
@@ -26,7 +25,7 @@ async function main() {
 	console.log("updatedValue", updatedValue);
 }
 
-async function verify(contractAddress: string, args: any) {
+async function verify(contractAddress: string, args: any[]) {
 	console.log("Verifying...");
 
 	try {

@@ -1,11 +1,9 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
-import dotenv from "dotenv";
+import "dotenv/config";
 import "@nomicfoundation/hardhat-verify";
 import "./tasks/block-number";
 import "hardhat-gas-reporter";
-
-dotenv.config();
 
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || "https://eth-sepolia";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0xKey";
