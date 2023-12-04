@@ -3,6 +3,7 @@ yarn.lock
 .env
 
 /a
+gas-report.txt
 
 # Hardhat files
 /cache

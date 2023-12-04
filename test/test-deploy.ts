@@ -1,4 +1,4 @@
-import { ContractTransactionResponse } from "ethers";
+import { BigNumberish, ContractTransactionResponse } from "ethers";
 import { ethers } from "hardhat";
 import { expect, assert } from "chai";
 import { SimpleStorage } from "../typechain-types";
@@ -28,5 +28,21 @@ describe("SimpleStorage", function () {
 		const currentValue = await simpleStorage.retrieve();
 
 		assert.equal(expectedValue, currentValue.toString());
+	});
+
+	it("Should add person in array", async function () {
+		const address = "0x9202cB9aEBBE5e78b93BEA8f2075b1BB0687d22C";
+		const number = "11";
+		await simpleStorage.addPerson(address, number);
+
+		const currentPersonAdded = (await simpleStorage.listOfPeople(0)).name;
+		const currentPersonFavoriteNumber = (
+			await simpleStorage.nameToFavoriteNumber(address)
+		).toString();
+
+		// console.log(address, currentPersonAdded);
+		// console.log(currentPersonFavoriteNumber, number);
+		assert.equal(address, currentPersonAdded);
+		assert.equal(currentPersonFavoriteNumber, number);
 	});
 });

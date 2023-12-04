@@ -3,12 +3,14 @@ import "@nomicfoundation/hardhat-toolbox";
 import dotenv from "dotenv";
 import "@nomicfoundation/hardhat-verify";
 import "./tasks/block-number";
+import "hardhat-gas-reporter";
 
 dotenv.config();
 
-const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL!;
-const PRIVATE_KEY = process.env.PRIVATE_KEY!;
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY!;
+const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || "https://eth-sepolia";
+const PRIVATE_KEY = process.env.PRIVATE_KEY || "0xKey";
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "key";
+const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || "key";
 
 const config: HardhatUserConfig = {
 	// defaultNetwork:"hardhat",
@@ -27,6 +29,15 @@ const config: HardhatUserConfig = {
 	solidity: "0.8.19",
 	etherscan: {
 		apiKey: ETHERSCAN_API_KEY,
+	},
+	gasReporter: {
+		// put it enabled: true -> only when you want to check gas optimizations
+		enabled: false,
+		noColors: true,
+		outputFile: "gas-report.txt",
+		currency: "USD",
+		coinmarketcap: COINMARKETCAP_API_KEY,
+		// token: "MATIC", // polygon network
 	},
 };
 
