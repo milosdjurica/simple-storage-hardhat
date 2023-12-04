@@ -19,7 +19,7 @@ contract SimpleStorage {
 	}
 
 	// view, pure -> view means we are just reading state , pure means cant change AND also cant view
-	function retreive() public view returns (uint256) {
+	function retrieve() public view returns (uint256) {
 		return myFavoriteNumber;
 	}
 
